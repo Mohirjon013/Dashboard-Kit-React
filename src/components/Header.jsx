@@ -3,33 +3,11 @@ import { Context } from '../context/Context'
 import searchIcon from'../assets/images/search-icon.svg'
 import noticeIcon from'../assets/images/notice.svg'
 import personImg from'../assets/images/person-img.png'
-import NumItem from './NumItem'
 
 
 
 function Header() {
-    const numData = [
-        {
-        id:1,
-        title:"Unresolved",
-        number:"60"
-        },
-        {
-        id:2,
-        title:"Overdue",
-        number:"16"
-        },
-        {
-        id:3,
-        title:"Open",
-        number:"43"
-        },
-        {
-        id:4,
-        title:"On hold",
-        number:"63"
-        }
-    ]
+   
     const {path} = useContext(Context)
     
     
