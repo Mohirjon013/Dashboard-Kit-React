@@ -1,11 +1,13 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { Agents, Articles, Contacts, Ideas, NotFound, Overview, Settings, Subscription, Tickets } from '../pages'
+import Header from '../components/Header'
 
 function Routers() {
   return (
-    <div className='w-[80%]'>
-        <Routes>
+    <div className='w-[80%] p-[30px]'>
+      <Header/>
+      <Routes>
           <Route path='/' element={<Overview/>} />
           <Route path='/tickets' element={<Tickets/>} />
           <Route path='/ideas' element={<Ideas/>} />
@@ -17,7 +19,7 @@ function Routers() {
           <Route path='/subscription' element={<Subscription/>} />
 
           <Route path='*' element={<NotFound/>} />
-        </Routes>
+      </Routes>
     </div>
   )
 }
