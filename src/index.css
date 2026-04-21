@@ -1,7 +1,16 @@
 @import "tailwindcss";
 
+*{
+    list-style: none;
+    box-sizing: border-box;
+}
+
 .active{
     background-color: rgba(159, 162, 180, 0.08);
     border-color: #DDE2FF;
     color: #DDE2FF;
+}
+
+.table-item:last-child{
+    border: none;
 }
