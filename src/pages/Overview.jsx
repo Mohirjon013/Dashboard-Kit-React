@@ -1,7 +1,7 @@
 import React from 'react'
 import NumItem from '../components/NumItem'
 import Treds from '../components/Treds'
-import TicketsTable from '../components/ticketsTable'
+import TicketsTable from "../components/TicketsTable"
 import Form from '../components/Form'
 import List from '../components/List'
 
