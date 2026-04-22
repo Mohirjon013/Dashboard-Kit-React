@@ -13,8 +13,12 @@ function Form() {
             title:inputValue.current.value,
             isComplete:false
         }
-        
-        setTodo(prev => [...prev, data])
+        if(data.title.trim()){
+            setTodo(prev => [...prev, data])
+        }
+        else{
+            alert("Please write down smth!")
+        }
         inputValue.current.value = ""
     }
   return (
@@ -27,7 +31,7 @@ function Form() {
             <p className='font-semibold text-[14px] leading-[20px] text-[#3751FF]'>View all</p>
         </div>
 
-        <form onSubmit={handleSubmitBtn} className='px-[32px] flex items-center justify-between'>
+        <form onSubmit={handleSubmitBtn} className='px-[32px] flex items-center justify-between border-b-1 border-b-[#DFE0EB]'>
             <input className='w-[85%] text-2xl py-[20px] outline-none space-x-8 placeholder:text-lg' ref={inputValue} type="text" placeholder='Create new task' required/>
 
             <button type='submit' className='w-[8%] cursor-pointer py-[20px]'>
