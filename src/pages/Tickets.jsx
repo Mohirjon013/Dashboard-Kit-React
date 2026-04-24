@@ -1,5 +1,4 @@
 import React from 'react'
-import filterImg from '../assets/images/filter.svg'
 import searchAdd from '../assets/images/search-add.svg'
 import filterIcon from '../assets/images/filter-user.svg'
 import AddUsers from '../assets/images/add-user.svg'

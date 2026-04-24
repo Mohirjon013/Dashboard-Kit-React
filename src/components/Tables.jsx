@@ -23,7 +23,7 @@ function Tables() {
           </thead>
           <tbody>
             {
-              user.map((item, index) => (
+              user.map((item) => (
                 <tr key={item.id}>
                   <td className='text-[14px] font-semibold text-[#252733] border-b-1 border-b-[#DFE0EB] text-start p-2 py-[16px] pl-5'>{item.detail}</td>
                   <td className='text-[14px] font-semibold text-[#252733] border-b-1 border-b-[#DFE0EB] text-center p-2 py-[16px]'> {item.name} </td>
