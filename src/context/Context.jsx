@@ -1,10 +1,33 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const Context = createContext()
 
 export const TitleContext = ({children}) => {
     const [path, setPath] = useState("Overview")
-    const [todo, setTodo] = useState([])
+
+    // start useLocalStore 
+    const useLocalStore = (key, defaultValue) => {
+        const [value, setValue] = useState(() => {
+            try{
+                const valueData = localStorage.getItem(key)
+                return valueData ? JSON.parse(valueData) : defaultValue
+            }catch(err){
+                console.log(err);
+                return defaultValue
+            }
+        })
+        useEffect(() => {
+            localStorage.setItem(key,JSON.stringify(value))
+
+        },[key,value])
+
+        return [value, setValue]
+    }
+    // edn useLocalStore 
+
+    const [todo, setTodo] = useLocalStore('todos',[])    
+    const [user, setUser] = useLocalStore('users',[])
+
 
 
     function deleteTodo(id){
@@ -21,9 +44,12 @@ export const TitleContext = ({children}) => {
         setTodo(findComplete)
     }
 
+    function deleteUser(id){
+        setUser(prev => prev.filter(item => item.id !== id))
+    }
 
 
     return (
-        <Context.Provider value={{path, setPath, todo, setTodo, deleteTodo, isCompleteFunc}}>{children}</Context.Provider>
+        <Context.Provider value={{path, setPath, todo, setTodo, deleteTodo, isCompleteFunc, user, setUser, deleteUser}}>{children}</Context.Provider>
     )
 }

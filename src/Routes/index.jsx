@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { Agents, Articles, Contacts, Ideas, NotFound, Overview, Settings, Subscription, Tickets } from '../pages'
+import { Agents, Articles, Contacts, Ideas, NotFound, Overview, Settings, Subscription, Tickets, AddUser, SingleUser } from '../pages'
 import Header from '../components/Header'
 
 function Routers() {
@@ -10,6 +10,11 @@ function Routers() {
       <Routes>
           <Route path='/' element={<Overview/>} />
           <Route path='/tickets' element={<Tickets/>} />
+          <Route path='/tickets/add' element={<AddUser/>} />
+          <Route path='/tickets/:id' element={<SingleUser/>} />
+          <Route path='/tickets/:id/update' element={<AddUser/>} />
+
+
           <Route path='/ideas' element={<Ideas/>} />
           <Route path='/contacts' element={<Contacts/>} />
           <Route path='/agents' element={<Agents/>} />
