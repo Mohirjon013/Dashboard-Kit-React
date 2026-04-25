@@ -17,8 +17,10 @@ function AddUser() {
       date:e.target.date.value,
       priority:e.target.priority.value
     }
+    if(data.detail.trim() != '' && data.name.trim() != ''){
+      setUser(prev => [...prev, data])
+    }
     
-    setUser(prev => [...prev, data])
     setTimeout(() => {
       navigate(-1)
     }, 500);
@@ -27,7 +29,7 @@ function AddUser() {
   return (
     <form onSubmit={handleSubmit} className='w-full border border-[#DFE0EB] rounded-[16px] bg-white mt-[54px]'>
       <div className="pt-[32px] px-[32px] flex items-center justify-between mb-5">
-        <button className='border-2 p-2 px-6 rounded-lg bg-white border-[#DFE0EB] text-lg text-[#252733] cursor-pointer' onClick={() => navigate(-1)}>Back</button>
+        <button type='button' className='border-2 p-2 px-6 rounded-lg bg-white border-[#DFE0EB] text-lg text-[#252733] cursor-pointer' onClick={() => navigate(-1)}>Back</button>
         <Button type={'submit'} title={'Add Users'} exrtaStyle={'px-5 border-2'}/>
       </div>
 

@@ -1,17 +1,23 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import searchAdd from '../assets/images/search-add.svg'
 import filterIcon from '../assets/images/filter-user.svg'
 import AddUsers from '../assets/images/add-user.svg'
 import pplIcon from '../assets/images/ppl-icon.svg'
 
+
 import Tables from "../components/Tables";
 
 import Button from '../components/Button';
 import { useNavigate } from 'react-router-dom';
+import { Context } from '../context/Context'
 
 
 function Tickets() {
   const navigate = useNavigate()
+  const {user} = useContext(Context)
+  const [search, setSearch] = useState('')
+
+  const filteredData = user.filter(item => item.detail.toLocaleLowerCase().includes(search.toLocaleLowerCase()) || item.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
   return (
     <div className='w-full border border-[#DFE0EB] rounded-[16px] bg-white mt-[54px]'>
       <div className="pt-[32px] px-[32px] flex items-center justify-between mb-5">
@@ -39,11 +45,17 @@ function Tickets() {
 
         <label className='w-[320px] flex border-[1px] border-[#D0D5DD] bg-[#F5F5F9] rounded-md px-[14px]'>
           <img src={searchAdd} alt="search img" width={20} height={20} />
-          <input className='py-[10px] w-[80%] ml-[8px] bg-[#F5F5F9] outline-none' type="text" placeholder='Search' />
+          <input 
+            className='py-[10px] w-[80%] ml-[8px] bg-[#F5F5F9] outline-none'
+            type="text" 
+            placeholder='Search' 
+            onChange={(e) => setSearch(e.target.value)}
+            value={search}
+          />
         </label>
       </div>
 
-      <Tables/>
+      <Tables data={filteredData}/>
     </div>
   )
 }

@@ -3,14 +3,17 @@ import React, { useContext } from 'react'
 import moreIcon from '../assets/images/more-icon.svg'
 import deleteIcon from '../assets/images/delete-icon.svg'
 import editIcon from '../assets/images/edit-icon.svg'
+
+import dataIcon from '../assets/images/data-icon.svg'
+
 import { Context } from '../context/Context'
 import { useNavigate } from 'react-router-dom'
 
-function Tables() {
-  const {user, deleteUser} = useContext(Context)
+function Tables({data}) {
+  const { deleteUser} = useContext(Context)
   const navigate = useNavigate()
   return (
-    <div className='py-3'>
+    <div className='py-3 pb-6'>
         <table className='w-full'>
           <thead>
             <tr>
@@ -22,8 +25,7 @@ function Tables() {
             </tr>
           </thead>
           <tbody>
-            {
-              user.map((item) => (
+            {data.length ? data.map((item) => (
                 <tr key={item.id}>
                   <td className='text-[14px] font-semibold text-[#252733] border-b-1 border-b-[#DFE0EB] text-start p-2 py-[16px] pl-5'>{item.detail}</td>
                   <td className='text-[14px] font-semibold text-[#252733] border-b-1 border-b-[#DFE0EB] text-center p-2 py-[16px]'> {item.name} </td>
@@ -46,7 +48,12 @@ function Tables() {
                   </td>
 
                 </tr>
-              ))
+              )) : <tr>
+                <td colSpan={5} className='text-center pt-3'>
+                  <p className='text-xl font-semibold mr-6'>No Data</p>
+                  <img className='mx-auto mt-3' src={dataIcon} alt="data-icon" width={130} height={130} />
+                </td>
+              </tr>
             }
           </tbody>
         </table>
