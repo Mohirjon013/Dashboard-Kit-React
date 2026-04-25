@@ -2,7 +2,7 @@ import React from 'react'
 import searchAdd from '../assets/images/search-add.svg'
 import filterIcon from '../assets/images/filter-user.svg'
 import AddUsers from '../assets/images/add-user.svg'
-
+import pplIcon from '../assets/images/ppl-icon.svg'
 
 import Tables from "../components/Tables";
 
@@ -16,7 +16,12 @@ function Tickets() {
     <div className='w-full border border-[#DFE0EB] rounded-[16px] bg-white mt-[54px]'>
       <div className="pt-[32px] px-[32px] flex items-center justify-between mb-5">
         <h2 className='font-bold text-[22px] text-[#252733]'>All tickets</h2>
-        <h3 className='font-semibold text-[19px] text-[#252733]'>Users</h3>
+        <div className="flex items-center gap-6">
+          <h3 className='font-semibold text-[23px] text-[#252733]'>Users</h3>
+          <img src={pplIcon} alt="ppl-icon" width={30} height={30} />
+
+
+        </div>
       </div>
 
       <div className="pt-[32px] px-[32px] flex items-center justify-between mb-5">
